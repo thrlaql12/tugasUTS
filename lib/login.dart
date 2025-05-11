@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 void main() {
   runApp(LoginApp());
 }
 
 class LoginApp extends StatelessWidget {
+  const LoginApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +18,8 @@ class LoginApp extends StatelessWidget {
 }
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -27,14 +32,22 @@ class _LoginScreenState extends State<LoginScreen> {
     String username = _usernameController.text;
     String password = _passwordController.text;
 
-    if (username == "admin" && password == "password") {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Login Berhasil")),
+    if (username == "thurilkeren" && password == "121212") {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Username atau Password salah")),
-      );
+      // PASTIKAN ScaffoldMessenger dipanggil dalam context yang valid
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Username atau Password salah"),
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
     }
   }
 
@@ -49,52 +62,58 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Text(
               "Koperasi Undiksha",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.blue[900]),
+              style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue[900]),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Image.asset("images/Logo_undiksha.png", height: 100),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Username",
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Password",
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _login,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue[900],
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
               ),
-              child: Text("Login", style: TextStyle(color: Colors.white)),
+              child: const Text("Login", style: TextStyle(color: Colors.white)),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: Text("Daftar Mbanking", style: TextStyle(color: Colors.blue[900])),
+                  child: Text("Daftar Mbanking",
+                      style: TextStyle(color: Colors.blue[900])),
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: Text("Lupa password?", style: TextStyle(color: Colors.blue[900])),
+                  child: Text("Lupa password?",
+                      style: TextStyle(color: Colors.blue[900])),
                 ),
               ],
             ),
-            Spacer(),
-            Text(
+            const Spacer(),
+            const Text(
               "copyright ©2022 by Undiksha",
               style: TextStyle(color: Colors.black54),
             ),

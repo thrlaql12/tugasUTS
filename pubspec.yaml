@@ -35,6 +35,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+  provider: ^6.1.1
+
+  url_launcher: ^6.1.10
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -45,6 +49,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -61,6 +66,7 @@ flutter:
   assets:
     - images/Logo_undiksha.png
     - images/pasfoto.jpg
+    - images/qrcode.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
